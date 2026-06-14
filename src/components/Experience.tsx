@@ -60,34 +60,34 @@ const Experience = () => {
           <p>Real responsibilities plus focused preparation for SDE internships and AI/ML roles.</p>
         </div>
 
-        <div className="relative space-y-5 pl-6">
-          <div className="absolute bottom-0 left-2 top-0 w-px bg-slate-200 dark:bg-white/10" />
+        <div className="relative space-y-5 sm:pl-6">
+          <div className="absolute bottom-0 left-2 top-0 hidden w-px bg-slate-200 dark:bg-white/10 sm:block" />
           {experiences.map((experience) => (
-            <div key={`${experience.role}-${experience.organization}`} className="premium-card relative p-6">
-              <span className="absolute -left-[1.9rem] top-7 h-4 w-4 rounded-full border-4 border-slate-50 bg-teal-500 dark:border-[#0B1220]" />
+            <div key={`${experience.role}-${experience.organization}`} className="premium-card relative p-4 sm:p-6">
+              <span className="absolute -left-[1.9rem] top-7 hidden h-4 w-4 rounded-full border-4 border-slate-50 bg-teal-500 dark:border-[#0B1220] sm:block" />
               <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
-                <div>
+                <div className="min-w-0">
                   <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-teal-500/10 text-teal-700 dark:text-teal-300">
                     <BriefcaseBusiness size={20} />
                   </div>
-                  <h3 className="text-main text-2xl font-semibold">{experience.role}</h3>
+                  <h3 className="text-main text-xl font-semibold sm:text-2xl">{experience.role}</h3>
                   <p className="text-copy-muted mt-2">{experience.organization}</p>
-                  <p className="mt-3 text-base font-medium text-teal-700 dark:text-teal-300">{experience.project}</p>
+                  <p className="mt-3 break-words text-sm font-medium text-teal-700 dark:text-teal-300 sm:text-base">{experience.project}</p>
                 </div>
-                <span className="rounded-full border border-teal-500/20 bg-teal-500/10 px-3 py-1 text-sm font-medium text-teal-800 dark:text-teal-200">
+                <span className="self-start rounded-full border border-teal-500/20 bg-teal-500/10 px-3 py-1 text-sm font-medium text-teal-800 dark:text-teal-200">
                   {experience.period}
                 </span>
               </div>
 
               {experience.links.length > 0 && (
-                <div className="mt-5 flex flex-wrap gap-2">
+                <div className="mt-5 flex flex-col gap-2 min-[420px]:flex-row min-[420px]:flex-wrap">
                   {experience.links.map((link) => (
                     <a
                       key={link.label}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-teal-500/50 hover:text-slate-950 dark:border-white/10 dark:text-slate-200 dark:hover:text-white"
+                      className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-teal-500/50 hover:text-slate-950 dark:border-white/10 dark:text-slate-200 dark:hover:text-white min-[420px]:flex-1 sm:w-auto sm:flex-none"
                     >
                       <link.icon size={16} />
                       {link.label}
@@ -96,9 +96,9 @@ const Experience = () => {
                 </div>
               )}
 
-              <div className="mt-7 grid gap-3 sm:grid-cols-2">
+              <div className="mt-6 grid gap-3 sm:mt-7 sm:grid-cols-2">
                 {experience.bullets.map((item) => (
-                  <div key={item} className="subtle-panel flex items-center gap-3 p-3">
+                  <div key={item} className="subtle-panel flex items-start gap-3 p-3">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-teal-600 dark:text-teal-300" />
                     <span className="text-soft text-sm font-medium">{item}</span>
                   </div>

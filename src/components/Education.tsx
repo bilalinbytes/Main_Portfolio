@@ -46,21 +46,21 @@ const Education = () => {
         </div>
 
         <div className="grid gap-5 lg:grid-cols-3">
-          <div className="premium-card p-6">
+          <div className="premium-card p-4 sm:p-6">
             <GraduationCap className="mb-6 h-8 w-8 text-teal-600 dark:text-teal-300" />
-            <h3 className="text-main text-2xl font-semibold">B.E. Computer Science & Engineering</h3>
-            <p className="mt-3 text-lg font-medium text-teal-700 dark:text-teal-300">PES University</p>
-            <div className="text-copy-muted mt-5 flex items-center gap-2">
+            <h3 className="text-main text-xl font-semibold sm:text-2xl">B.E. Computer Science & Engineering</h3>
+            <p className="mt-3 text-base font-medium text-teal-700 dark:text-teal-300 sm:text-lg">PES University</p>
+            <div className="text-copy-muted mt-5 flex items-start gap-2 text-sm sm:items-center sm:text-base">
               <Calendar size={18} />
               <span>Expected Graduation: 2027</span>
             </div>
           </div>
 
-          <div className="premium-card p-6 lg:col-span-2">
+          <div className="premium-card p-4 sm:p-6 lg:col-span-2">
             <h3 className="text-main text-lg font-semibold">Relevant Coursework</h3>
             <div className="mt-5 flex flex-wrap gap-2">
               {coursework.map((course) => (
-                <span key={course} className="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-700 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200">
+                <span key={course} className="max-w-full break-words rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-700 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200">
                   {course}
                 </span>
               ))}
@@ -79,12 +79,12 @@ const Education = () => {
                       href={certification.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-md border border-teal-500/20 bg-teal-500/10 px-3 py-2 text-sm font-medium text-teal-800 transition hover:border-teal-500/50 dark:text-teal-100"
+                      className="max-w-full break-words rounded-md border border-teal-500/20 bg-teal-500/10 px-3 py-2 text-sm font-medium text-teal-800 transition hover:border-teal-500/50 dark:text-teal-100"
                     >
                       {certification.name}
                     </a>
                   ) : (
-                    <span key={certification.name} className="rounded-md border border-teal-500/20 bg-teal-500/10 px-3 py-2 text-sm font-medium text-teal-800 dark:text-teal-100">
+                    <span key={certification.name} className="max-w-full break-words rounded-md border border-teal-500/20 bg-teal-500/10 px-3 py-2 text-sm font-medium text-teal-800 dark:text-teal-100">
                       {certification.name}
                     </span>
                   )

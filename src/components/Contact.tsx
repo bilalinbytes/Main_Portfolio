@@ -47,26 +47,26 @@ const Contact = () => {
         </div>
 
         <div className="grid gap-5 md:grid-cols-2">
-          <div className="premium-card p-6">
+          <div className="premium-card p-4 sm:p-6">
             <h3 className="text-main text-xl font-semibold">Contact Info</h3>
             <div className="mt-5 space-y-3">
               {contactInfo.map((info) => (
                 <a
                   key={info.title}
                   href={info.link}
-                  className="subtle-panel flex items-center gap-4 p-4 transition hover:border-teal-500/40"
+                  className="subtle-panel flex min-h-16 items-start gap-3 p-3 transition hover:border-teal-500/40 sm:gap-4 sm:p-4"
                 >
                   <info.icon className="h-5 w-5 shrink-0 text-teal-600 dark:text-teal-300" />
-                  <span>
+                  <span className="min-w-0">
                     <span className="text-main block text-sm font-semibold">{info.title}</span>
-                    <span className="text-copy-muted block text-sm">{info.value}</span>
+                    <span className="text-copy-muted block break-words text-sm">{info.value}</span>
                   </span>
                 </a>
               ))}
             </div>
           </div>
 
-          <div className="premium-card p-6">
+          <div className="premium-card p-4 sm:p-6">
             <h3 className="text-main text-xl font-semibold">Find Me Online</h3>
             <div className="mt-5 space-y-3">
               {socialLinks.map((social) => (
@@ -75,10 +75,10 @@ const Contact = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="subtle-panel flex items-center gap-4 p-4 transition hover:border-teal-500/40"
+                  className="subtle-panel flex min-h-16 items-start gap-3 p-3 transition hover:border-teal-500/40 sm:gap-4 sm:p-4"
                 >
                   <social.icon className="h-5 w-5 shrink-0 text-teal-600 dark:text-teal-300" />
-                  <span>
+                  <span className="min-w-0">
                     <span className="text-main block text-sm font-semibold">{social.label}</span>
                     <span className="text-copy-muted block text-sm">{social.text}</span>
                   </span>
@@ -88,7 +88,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="text-copy-muted mt-12 border-t border-slate-200 pt-6 text-center text-sm dark:border-white/10">
+        <div className="text-copy-muted mt-8 border-t border-slate-200 pt-6 text-center text-sm dark:border-white/10 sm:mt-12">
           2026 Mohammed Bilal. Built with React and Tailwind CSS.
         </div>
       </div>

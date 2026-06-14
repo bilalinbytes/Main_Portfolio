@@ -99,21 +99,43 @@
 
   html {
     scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html,
+  body,
+  #root {
+    min-width: 0;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-slate-50 text-slate-950 antialiased dark:bg-[#0B1220] dark:text-slate-50;
     font-family: Inter, system-ui, sans-serif;
   }
+
+  section {
+    scroll-margin-top: 4.5rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  a,
+  span {
+    overflow-wrap: anywhere;
+  }
 }
 
 @layer components {
   .app-shell {
-    @apply min-h-screen bg-slate-50 text-slate-950 transition-colors duration-300 selection:bg-teal-500/20 selection:text-teal-950 dark:bg-[#0B1220] dark:text-slate-100 dark:selection:bg-teal-500/30 dark:selection:text-white;
+    @apply min-h-screen overflow-x-hidden bg-slate-50 text-slate-950 transition-colors duration-300 selection:bg-teal-500/20 selection:text-teal-950 dark:bg-[#0B1220] dark:text-slate-100 dark:selection:bg-teal-500/30 dark:selection:text-white;
   }
 
   .section-shell {
-    @apply py-14 sm:py-16;
+    @apply py-10 sm:py-14 lg:py-16;
   }
 
   .section-primary {
@@ -129,19 +151,19 @@
   }
 
   .section-heading {
-    @apply mx-auto mb-8 max-w-3xl text-center;
+    @apply mx-auto mb-6 max-w-3xl text-center sm:mb-8;
   }
 
   .section-heading h2 {
-    @apply mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-white;
+    @apply mt-3 text-2xl font-semibold tracking-tight text-slate-950 sm:text-4xl dark:text-white;
   }
 
   .section-heading p {
-    @apply mt-3 text-base leading-7 text-slate-600 dark:text-slate-400;
+    @apply mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7 dark:text-slate-400;
   }
 
   .premium-card {
-    @apply rounded-lg border border-slate-200 bg-white shadow-lg shadow-slate-200/60 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-teal-500/40 hover:shadow-teal-100 dark:border-white/10 dark:bg-white/[0.045] dark:shadow-2xl dark:shadow-black/20 dark:hover:border-teal-400/35 dark:hover:bg-white/[0.06];
+    @apply min-w-0 rounded-lg border border-slate-200 bg-white shadow-lg shadow-slate-200/60 backdrop-blur transition duration-300 md:hover:-translate-y-1 md:hover:border-teal-500/40 md:hover:shadow-teal-100 dark:border-white/10 dark:bg-white/[0.045] dark:shadow-2xl dark:shadow-black/20 dark:md:hover:border-teal-400/35 dark:md:hover:bg-white/[0.06];
   }
 
   .text-main {
@@ -162,6 +184,37 @@
 
   .terminal-panel {
     @apply border-slate-200 bg-slate-950 text-slate-100 dark:border-white/10 dark:bg-[#09111F];
+  }
+}
+
+@media (max-width: 480px) {
+  .section-shell {
+    @apply py-8;
+  }
+
+  .section-heading {
+    @apply mb-5 text-left;
+  }
+
+  .section-heading h2 {
+    @apply text-[1.65rem] leading-tight;
+  }
+
+  .section-heading p {
+    @apply text-[0.95rem] leading-6;
+  }
+
+  .section-kicker {
+    @apply text-xs tracking-[0.16em];
+  }
+
+  .premium-card {
+    @apply shadow-md shadow-slate-200/50 dark:shadow-black/20;
+  }
+
+  a,
+  button {
+    touch-action: manipulation;
   }
 }
 

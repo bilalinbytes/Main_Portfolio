@@ -19,13 +19,13 @@ const About = () => {
         </div>
 
         <div className="grid gap-5 lg:grid-cols-[0.72fr_1.28fr] lg:items-stretch">
-          <aside className="premium-card p-5 text-center">
+          <aside className="premium-card p-4 text-center sm:p-5">
             <img
               src={profileImage}
               alt="Mohammed Bilal"
               className="mx-auto h-28 w-28 rounded-full border border-slate-200 object-cover shadow-md dark:border-white/10"
             />
-            <h3 className="text-main mt-4 text-2xl font-semibold">Mohammed Bilal</h3>
+            <h3 className="text-main mt-4 text-xl font-semibold sm:text-2xl">Mohammed Bilal</h3>
             <p className="mt-2 text-base font-medium text-teal-700 dark:text-teal-300">Final-Year CSE Student</p>
 
             <div className="mt-4 flex flex-wrap justify-center gap-2">
@@ -48,9 +48,9 @@ const About = () => {
             </div>
           </aside>
 
-          <div className="premium-card p-6">
-            <h3 className="text-main text-2xl font-semibold">Software engineer in progress.</h3>
-            <div className="text-soft mt-4 space-y-4 text-base leading-7">
+          <div className="premium-card p-4 sm:p-6">
+            <h3 className="text-main text-xl font-semibold sm:text-2xl">Software engineer in progress.</h3>
+            <div className="text-soft mt-4 space-y-4 text-sm leading-6 sm:text-base sm:leading-7">
               <p>
                 I am Mohammed Bilal, a Computer Science & Engineering student at PES University with a 7.60 CGPA,
                 distinction awards, and hands-on work across backend systems, cloud-aware application design, applied
@@ -70,7 +70,7 @@ const About = () => {
 
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {highlights.map((item) => (
-            <div key={item.title} className="premium-card p-5">
+            <div key={item.title} className="premium-card p-4 sm:p-5">
               <item.icon className="mb-5 h-7 w-7 text-teal-600 dark:text-teal-300" />
               <h3 className="text-main text-lg font-semibold">{item.title}</h3>
               <p className="text-copy-muted mt-3 text-sm leading-6">{item.text}</p>
