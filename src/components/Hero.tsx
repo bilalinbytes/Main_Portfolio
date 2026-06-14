@@ -1,108 +1,120 @@
-import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import profileImage from "@/assets/profile.png";
+import { Download, Github, Linkedin, Mail, MapPin, Terminal } from "lucide-react";
 import cvFile from "@/assets/Bilal_cv.pdf";
+import profileImage from "@/assets/bilal-profile.png";
+
+const stats = ["Final-Year CSE", "SDE Internship", "AI/ML Track", "Backend APIs", "PES University"];
+
+const terminalLines = [
+  ["$ whoami", "Mohammed Bilal"],
+  ["$ target_roles", "SDE Internship  |  AI/ML Engineer"],
+  ["$ tech_stack", "Python  C++  TypeScript  React  FastAPI  Node.js  AWS"],
+  ["$ focus", "DSA  Backend APIs  Applied ML  Cloud AI  Healthcare software"],
+  ["$ current_work", "CoreStack ModelMatrix capstone + SaansSync AIIMS Delhi collaboration"],
+];
+
+const socials = [
+  { label: "GitHub", href: "https://github.com/bilalinbytes", icon: Github },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/mohammed-bilal-23678328a/", icon: Linkedin },
+  { label: "HackerRank", href: "https://www.hackerrank.com/profile/PES2UG23CS344", text: "HR" },
+];
 
 const Hero = () => {
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center pt-16 px-4 relative overflow-hidden"
-    >
-      {/* Animated Background Blobs */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300/30 dark:bg-blue-600/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-300/30 dark:bg-purple-600/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300/30 dark:bg-pink-600/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-      </div>
+    <section id="home" className="section-primary relative overflow-hidden px-4 pb-12 pt-24 sm:px-6 lg:px-8 lg:pt-28">
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(15,118,110,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(15,118,110,0.08)_1px,transparent_1px)] bg-[size:72px_72px] opacity-40 dark:opacity-100" />
+      <div className="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_50%_0%,rgba(20,184,166,0.14),transparent_55%)]" />
 
-      {/* Main Content */}
-      <div className="max-w-6xl mx-auto text-center relative z-10">
-        <div className="animate-fade-in-up">
-          {/* Profile Image */}
-          <div className="mb-8">
-            <img
-              src={profileImage}
-              alt="Bilal Profile"
-              className="w-36 h-36 mx-auto rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-in-out"
-            />
-          </div>
+      <div className="relative mx-auto max-w-7xl">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="animate-fade-in-up">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-teal-500/30 bg-teal-500/10 px-4 py-2 text-sm font-medium text-teal-800 dark:text-teal-200">
+              <span className="h-2 w-2 rounded-full bg-teal-500 shadow-[0_0_16px_rgba(20,184,166,0.75)]" />
+              Software engineering + applied AI/ML
+            </div>
+            <h1 className="text-main max-w-4xl text-5xl font-semibold tracking-tight sm:text-6xl">
+              Mohammed Bilal
+            </h1>
+            <p className="mt-4 text-xl font-medium text-teal-700 dark:text-teal-300 sm:text-2xl">
+              Final-year CSE student focused on backend, full-stack, cloud AI, and healthcare software projects.
+            </p>
+            <p className="text-soft mt-4 max-w-2xl text-base leading-7 sm:text-lg">
+              I build practical software with clean UI, REST APIs, data-driven features, and machine learning workflows,
+              including a CoreStack capstone and an AIIMS Delhi respiratory care collaboration.
+            </p>
 
-          {/* Name */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-text-reveal">
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient-x">
-              Bilal
-            </span>
-          </h1>
-
-          {/* Tagline */}
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-6 animate-slide-in-left animation-delay-500">
-            Computer Science & Engineering Student
-          </h2>
-
-          {/* Bio */}
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-in-right animation-delay-700">
-            Passionate about creating innovative solutions through code...
-          </p>
-
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-slide-in-up animation-delay-1000">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl group"
-            >
-              <a
-                href="mailto:mohammedbilal96654@gmail.com"
-                className="flex items-center gap-2"
-              >
-                Get In Touch
-                <Mail size={18} className="group-hover:rotate-12 transition-transform duration-200" />
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <a href={cvFile} download className="inline-flex items-center justify-center gap-2 rounded-lg bg-teal-700 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-700/20 transition hover:bg-teal-600">
+                <Download size={18} />
+                Download Resume
               </a>
-            </Button>
-
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full hover:scale-105 transition-all duration-300 group border-purple-300 dark:border-purple-700"
-            >
-              <a href={cvFile} download className="flex items-center gap-2">
-                <Download size={18} className="group-hover:scale-110 transition-transform duration-200" />
-                Download CV
+              <a href="mailto:mohammedbilal96654@gmail.com" className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:border-teal-500/50 hover:bg-teal-50 dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:hover:bg-teal-500/10">
+                <Mail size={18} />
+                Contact Me
               </a>
-            </Button>
+            </div>
 
-            {/* Social Links */}
-            <div className="flex gap-4">
-              <a href="https://github.com/Mohammedbilal12345" target="_blank" rel="noopener noreferrer">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="rounded-full hover:scale-110 transition-all duration-300 hover:bg-blue-100 dark:hover:bg-blue-900/20 group"
+            <div className="mt-5 flex flex-wrap gap-3">
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="inline-flex h-11 min-w-11 items-center justify-center rounded-lg border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-700 transition hover:border-teal-500/50 hover:text-slate-950 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-300 dark:hover:text-white"
                 >
-                  <Github size={20} className="group-hover:-rotate-12 transition-transform duration-200" />
-                </Button>
-              </a>
-              <a href="https://www.linkedin.com/in/mohammed-bilal-23678328a/" target="_blank" rel="noopener noreferrer">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="rounded-full hover:scale-110 transition-all duration-300 hover:bg-blue-100 dark:hover:bg-blue-900/20 group"
-                >
-                  <Linkedin size={20} className="group-hover:-rotate-12 transition-transform duration-200" />
-                </Button>
-              </a>
+                  {"icon" in social ? <social.icon size={18} /> : social.text}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Scroll Down Arrow */}
-          <div className="animate-bounce-slow animation-delay-1500">
-            <a
-              href="#about"
-              className="inline-block hover:scale-110 transition-transform duration-200"
-            >
-              <ArrowDown size={32} className="text-blue-600 dark:text-blue-400 mx-auto" />
-            </a>
+          <div className="animate-slide-in-right space-y-4">
+            <div className="premium-card overflow-hidden p-5 text-center">
+              <img
+                src={profileImage}
+                alt="Mohammed Bilal"
+                className="mx-auto aspect-square w-52 rounded-full border border-slate-200 object-cover shadow-lg dark:border-white/10 sm:w-60"
+              />
+              <div className="mt-5">
+                <p className="text-main text-xl font-semibold">Software Engineering Candidate</p>
+                <p className="text-copy-muted mt-2 flex items-center justify-center gap-2 text-sm">
+                  <MapPin size={16} />
+                  Bengaluru, India
+                </p>
+              </div>
+            </div>
+
+            <div className="premium-card overflow-hidden">
+              <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-5 py-4 dark:border-white/10 dark:bg-white/[0.03]">
+                <div className="flex gap-2">
+                  <span className="h-3 w-3 rounded-full bg-red-400" />
+                  <span className="h-3 w-3 rounded-full bg-yellow-400" />
+                  <span className="h-3 w-3 rounded-full bg-green-400" />
+                </div>
+                <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+                  <Terminal size={16} />
+                  placement.ts
+                </div>
+              </div>
+              <div className="terminal-panel space-y-3 p-4 font-mono text-sm">
+                {terminalLines.map(([command, response]) => (
+                  <div key={command}>
+                    <p className="text-teal-300">{command}</p>
+                    <p className="mt-1 whitespace-pre-wrap text-slate-100">{response}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          {stats.map((stat) => (
+            <div key={stat} className="premium-card p-4 text-center">
+              <p className="text-main text-sm font-semibold">{stat}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

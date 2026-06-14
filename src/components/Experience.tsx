@@ -1,75 +1,110 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Briefcase, Calendar } from "lucide-react";
+import { BriefcaseBusiness, CheckCircle2, ExternalLink, Github } from "lucide-react";
+
+const experiences = [
+  {
+    role: "Freelance Software Developer",
+    organization: "Self-employed",
+    period: "Jan 2025 - Present",
+    project: "SaansSync - AIIMS Delhi Collaboration",
+    links: [
+      { label: "Code", href: "https://github.com/bilalinbytes/webversionSS", icon: Github },
+      { label: "Live Demo", href: "https://webversion10.vercel.app/login", icon: ExternalLink },
+      {
+        label: "AIIMS Certificate",
+        href: "https://drive.google.com/file/d/1V25BEDX2Wm8gsVd-Bf0WHQczfGRmH6C-/view?usp=sharing",
+        icon: ExternalLink,
+      },
+    ],
+    bullets: [
+      "Developed a respiratory care platform under the guidance of Dr. Irfan Sheikh, Pulmonary Specialist, AIIMS Delhi",
+      "Built patient and clinician workflows for symptom tracking, medication monitoring, and appointment management",
+      "Implemented secure role-based access, multilingual support, and risk signals using SpO2, AQI, and symptom trends",
+      "Delivered a working deployed version and earned a certificate from AIIMS Delhi for the collaboration",
+    ],
+  },
+  {
+    role: "Industry Capstone Project",
+    organization: "CoreStack",
+    period: "Sep 2025 - Present",
+    project: "ModelMatrix - AI Model Benchmarking & Recommendation Platform",
+    links: [{ label: "Repository", href: "https://github.com/Capstone-82", icon: Github }],
+    bullets: [
+      "Developing ModelMatrix, an AI model benchmarking and recommendation platform using AWS Bedrock and Google Vertex AI",
+      "Building FastAPI microservices for automated benchmarking, prompt analysis, and model recommendation workflows",
+      "Designing dashboards for benchmark analytics, governance insights, and enterprise model evaluation support",
+      "Connecting cloud AI services with practical evaluation workflows for model selection and comparison",
+    ],
+  },
+  {
+    role: "Head of Web Development",
+    organization: "Mahil AI Club, PES University",
+    period: "Feb 2025 - Aug 2025",
+    project: "Club web development and technical events",
+    links: [],
+    bullets: [
+      "Led frontend development work for Mahil AI Club initiatives at PES University",
+      "Built and maintained React-based interfaces for events, hackathons, and club workflows",
+      "Created coding and API-oriented problem statements for technical events",
+      "Practiced product-company interview stories around ownership, tradeoffs, and debugging",
+    ],
+  },
+];
 
 const Experience = () => {
-  const experiences = [
-    {
-      title: "Head of Web Development",
-      company: "Mahil AI Club, PES University (RR Campus)",
-      period: "Apr 2024 - Present",
-      description:
-        "Leading the web development initiatives at Mahil AI, a technical club at PES University focused on empowering innovation through hackathons, CTFs, and AI-driven solutions. Spearheaded the club's digital presence and contributed to event strategy and execution.",
-      achievements: [
-        "Built and maintained the Mahil AI website frontend using HTML, CSS, JavaScript, and React",
-        "Conducted and designed coding challenges and API-based problem statements for internal hackathons",
-        "Led the development of MERN stack-based applications to support event logistics and participant dashboards",
-        "Authored and reviewed advanced code and cryptography questions for club-led CTFs and hackathons",
-        "Collaborated with team leads to drive outreach, engagement, and mentorship initiatives across the university"
-      ]
-    }
-  ];
-
   return (
-    <section id="experience" className="py-20 px-4 bg-white/50 dark:bg-gray-800/50">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-            Roles & Responsibilities
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-8"></div>
-          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-            A reflection of my technical leadership and contributions in real-world university-led tech initiatives
-          </p>
+    <section id="experience" className="section-shell section-primary">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="section-heading">
+          <span className="section-kicker">Experience</span>
+          <h2>Leadership and engineering practice</h2>
+          <p>Real responsibilities plus focused preparation for SDE internships and AI/ML roles.</p>
         </div>
 
-        <div className="space-y-8">
-          {experiences.map((exp, index) => (
-            <Card
-              key={index}
-              className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
-            >
-              <CardHeader>
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                  <div>
-                    <CardTitle className="flex items-center gap-2 text-xl font-semibold text-gray-800 dark:text-white mb-2">
-                      <Briefcase size={20} className="text-blue-600" />
-                      {exp.title}
-                    </CardTitle>
-                    <p className="text-lg font-medium text-blue-600">{exp.company}</p>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-                    <Calendar size={16} />
-                    <span className="font-medium">{exp.period}</span>
-                  </div>
-                </div>
-              </CardHeader>
-
-              <CardContent className="space-y-4">
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{exp.description}</p>
-
+        <div className="relative space-y-5 pl-6">
+          <div className="absolute bottom-0 left-2 top-0 w-px bg-slate-200 dark:bg-white/10" />
+          {experiences.map((experience) => (
+            <div key={`${experience.role}-${experience.organization}`} className="premium-card relative p-6">
+              <span className="absolute -left-[1.9rem] top-7 h-4 w-4 rounded-full border-4 border-slate-50 bg-teal-500 dark:border-[#0B1220]" />
+              <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
                 <div>
-                  <h4 className="font-semibold text-gray-800 dark:text-white mb-3">Key Achievements:</h4>
-                  <ul className="space-y-2">
-                    {exp.achievements.map((achievement, achievementIndex) => (
-                      <li key={achievementIndex} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-600 dark:text-gray-300">{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-teal-500/10 text-teal-700 dark:text-teal-300">
+                    <BriefcaseBusiness size={20} />
+                  </div>
+                  <h3 className="text-main text-2xl font-semibold">{experience.role}</h3>
+                  <p className="text-copy-muted mt-2">{experience.organization}</p>
+                  <p className="mt-3 text-base font-medium text-teal-700 dark:text-teal-300">{experience.project}</p>
                 </div>
-              </CardContent>
-            </Card>
+                <span className="rounded-full border border-teal-500/20 bg-teal-500/10 px-3 py-1 text-sm font-medium text-teal-800 dark:text-teal-200">
+                  {experience.period}
+                </span>
+              </div>
+
+              {experience.links.length > 0 && (
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {experience.links.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-teal-500/50 hover:text-slate-950 dark:border-white/10 dark:text-slate-200 dark:hover:text-white"
+                    >
+                      <link.icon size={16} />
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+
+              <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                {experience.bullets.map((item) => (
+                  <div key={item} className="subtle-panel flex items-center gap-3 p-3">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-teal-600 dark:text-teal-300" />
+                    <span className="text-soft text-sm font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

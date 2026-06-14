@@ -1,87 +1,81 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Code, Brain, Users, Target } from "lucide-react";
+import { Brain, Cloud, Code2, Database, Linkedin, Mail } from "lucide-react";
+import profileImage from "@/assets/bilal-profile.png";
+
+const highlights = [
+  { icon: Code2, title: "Software Engineering", text: "Clean code, practical features, APIs, and production-minded execution." },
+  { icon: Database, title: "Backend Engineering", text: "REST APIs, authentication, CRUD systems, and data modeling." },
+  { icon: Cloud, title: "Cloud Computing", text: "AWS, Bedrock, EC2, S3, Lambda, Docker, and cloud-aware project delivery." },
+  { icon: Brain, title: "AI/ML Engineering", text: "Vertex AI, Scikit-learn, Pandas, NumPy, benchmarking, and model evaluation workflows." },
+];
 
 const About = () => {
-  const highlights = [
-    {
-      icon: Code,
-      title: "Full-Stack Development",
-      description: "Proficient in building end-to-end scalable web applications",
-    },
-    {
-      icon: Brain,
-      title: "Machine Learning Enthusiast",
-      description: "Actively exploring AI, ML, and data-driven technologies",
-    },
-    {
-      icon: Users,
-      title: "Team Collaboration",
-      description: "Skilled in working with diverse teams and cross-functional roles",
-    },
-    {
-      icon: Target,
-      title: "SDE Aspirant",
-      description: "Focused on writing clean, efficient, and production-ready code",
-    },
-  ];
-
   return (
-    <section
-      id="about"
-      className="py-20 px-4 bg-white/50 dark:bg-gray-800/50 transition-colors duration-300"
-    >
-      <div className="max-w-6xl mx-auto">
-        {/* Section Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-fade-in-up">
-            About Me
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8 animate-slide-in-left"></div>
+    <section id="about" className="section-shell section-secondary">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="section-heading">
+          <span className="section-kicker">About</span>
+          <h2>Profile</h2>
+          <p>A compact snapshot of my background, technical direction, and project strengths.</p>
         </div>
 
-        {/* Main Grid */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          {/* Left Side - Bio */}
-          <div className="animate-slide-in-left">
-            <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-200">
-              Hello! I'm Mohammed Bilal
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              I’m a driven Computer Science & Engineering student at PES University with a clear vision — to become a skilled Software Development Engineer and create intelligent, scalable systems that solve real-world problems.
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              My technical journey includes full-stack web development, system design, and building clean, robust applications using modern frameworks. Alongside this, I’m deeply interested in Machine Learning and continuously explore how AI can be integrated into everyday tech.
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              I enjoy learning new technologies, solving algorithmic challenges, and participating in hackathons to push my creative limits. From building production-ready projects for clients to developing personal web experiences, I approach each project with dedication and precision.
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              I believe in continuous growth, meaningful collaboration, and writing code that not only works — but matters. Whether it's for a user-facing product or a machine learning pipeline, I strive to build solutions that make a difference.
-            </p>
-          </div>
+        <div className="grid gap-5 lg:grid-cols-[0.72fr_1.28fr] lg:items-stretch">
+          <aside className="premium-card p-5 text-center">
+            <img
+              src={profileImage}
+              alt="Mohammed Bilal"
+              className="mx-auto h-28 w-28 rounded-full border border-slate-200 object-cover shadow-md dark:border-white/10"
+            />
+            <h3 className="text-main mt-4 text-2xl font-semibold">Mohammed Bilal</h3>
+            <p className="mt-2 text-base font-medium text-teal-700 dark:text-teal-300">Final-Year CSE Student</p>
 
-          {/* Right Side - Highlights */}
-          <div className="grid grid-cols-2 gap-6 animate-slide-in-right">
-            {highlights.map((item, index) => (
-              <Card
-                key={index}
-                className="hover:shadow-[0_0_25px_rgba(99,102,241,0.4)] transition-all duration-300 hover:scale-105 hover:-translate-y-2 border-0 shadow-md bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm group"
+            <div className="mt-4 flex flex-wrap justify-center gap-2">
+              <a
+                href="mailto:mohammedbilal96654@gmail.com"
+                className="inline-flex items-center gap-2 rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-teal-500/50 hover:text-slate-950 dark:border-white/10 dark:text-slate-300 dark:hover:text-white"
               >
-                <CardContent className="p-6 text-center">
-                  <item.icon
-                    size={40}
-                    className="text-blue-600 dark:text-blue-400 mx-auto mb-4 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300"
-                  />
-                  <h4 className="font-semibold mb-2 text-gray-800 dark:text-gray-200 group-hover:text-blue-600 transition-colors">
-                    {item.title}
-                  </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {item.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+                <Mail size={16} />
+                Email
+              </a>
+              <a
+                href="https://www.linkedin.com/in/mohammed-bilal-23678328a/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-teal-500/50 hover:text-slate-950 dark:border-white/10 dark:text-slate-300 dark:hover:text-white"
+              >
+                <Linkedin size={16} />
+                LinkedIn
+              </a>
+            </div>
+          </aside>
+
+          <div className="premium-card p-6">
+            <h3 className="text-main text-2xl font-semibold">Software engineer in progress.</h3>
+            <div className="text-soft mt-4 space-y-4 text-base leading-7">
+              <p>
+                I am Mohammed Bilal, a Computer Science & Engineering student at PES University with a 7.60 CGPA,
+                distinction awards, and hands-on work across backend systems, cloud-aware application design, applied
+                AI/ML, and practical project execution.
+              </p>
+              <p>
+                My recent work includes the CoreStack industry capstone, ModelMatrix, where I am building AI model
+                benchmarking and recommendation workflows with AWS Bedrock, Google Vertex AI, and FastAPI services.
+              </p>
+              <p>
+                I also developed SaansSync through an AIIMS Delhi collaboration, building patient and clinician flows for
+                respiratory care with role-based access, symptom tracking, medication monitoring, and risk signals.
+              </p>
+            </div>
           </div>
+        </div>
+
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {highlights.map((item) => (
+            <div key={item.title} className="premium-card p-5">
+              <item.icon className="mb-5 h-7 w-7 text-teal-600 dark:text-teal-300" />
+              <h3 className="text-main text-lg font-semibold">{item.title}</h3>
+              <p className="text-copy-muted mt-3 text-sm leading-6">{item.text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
