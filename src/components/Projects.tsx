@@ -87,44 +87,45 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="section-shell section-secondary">
+    <section id="projects" aria-labelledby="projects-heading" className="section-shell section-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="section-heading">
-          <span className="section-kicker">Projects & Work</span>
-          <h2>Projects with interview talking points</h2>
+          <span className="section-kicker">Featured Projects</span>
+          <h2 id="projects-heading">Mohammed Bilal – Featured Projects</h2>
           <p>
-            A focused set of software, AI/ML, and systems projects that can be explained clearly in top-company interviews.
+            A focused set of software, AI/ML, and systems projects built by Mohammed Bilal — each explained clearly
+            with real-world context, tech stack, and links.
           </p>
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
-            <article key={project.title} className="premium-card flex flex-col">
+            <article key={project.title} className="premium-card flex flex-col" itemScope itemType="https://schema.org/SoftwareSourceCode">
               <div className="p-4 sm:p-6">
-                <h3 className="text-main break-words text-lg font-semibold sm:text-xl">{project.title}</h3>
-                <p className="text-copy-muted mt-3 text-sm leading-6 md:min-h-28">{project.description}</p>
-                <div className="mt-5 flex flex-wrap gap-2">
+                <h3 className="text-main break-words text-lg font-semibold sm:text-xl" itemProp="name">{project.title}</h3>
+                <p className="text-copy-muted mt-3 text-sm leading-6 md:min-h-28" itemProp="description">{project.description}</p>
+                <div className="mt-5 flex flex-wrap gap-2" aria-label="Technologies used">
                   {project.focus.map((tech) => (
-                    <span key={tech} className="max-w-full break-words rounded-md border border-teal-500/20 bg-teal-500/10 px-2.5 py-1 text-xs font-medium text-teal-800 dark:text-teal-100">
+                    <span key={tech} className="max-w-full break-words rounded-md border border-teal-500/20 bg-teal-500/10 px-2.5 py-1 text-xs font-medium text-teal-800 dark:text-teal-100" itemProp="programmingLanguage">
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
               <div className="mt-auto flex flex-col gap-2 px-4 pb-4 min-[420px]:flex-row min-[420px]:flex-wrap sm:px-6 sm:pb-6">
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-teal-500/50 hover:text-slate-950 dark:border-white/10 dark:text-slate-200 dark:hover:text-white min-[420px]:flex-1 sm:w-auto sm:flex-none">
-                  <Github size={16} />
+                <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code on GitHub`} itemProp="codeRepository" className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-teal-500/50 hover:text-slate-950 dark:border-white/10 dark:text-slate-200 dark:hover:text-white min-[420px]:flex-1 sm:w-auto sm:flex-none">
+                  <Github size={16} aria-hidden="true" />
                   Code
                 </a>
                 {project.demo && (
-                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-teal-700 px-3 py-2 text-sm font-medium text-white transition hover:bg-teal-600 min-[420px]:flex-1 sm:w-auto sm:flex-none">
-                    <ExternalLink size={16} />
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} live demo`} className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-teal-700 px-3 py-2 text-sm font-medium text-white transition hover:bg-teal-600 min-[420px]:flex-1 sm:w-auto sm:flex-none">
+                    <ExternalLink size={16} aria-hidden="true" />
                     Live
                   </a>
                 )}
                 {project.certificate && (
-                  <a href={project.certificate} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-teal-500/20 bg-teal-500/10 px-3 py-2 text-sm font-medium text-teal-800 transition hover:border-teal-500/50 dark:text-teal-100 min-[420px]:flex-1 sm:w-auto sm:flex-none">
-                    <Award size={16} />
+                  <a href={project.certificate} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} certificate`} className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-teal-500/20 bg-teal-500/10 px-3 py-2 text-sm font-medium text-teal-800 transition hover:border-teal-500/50 dark:text-teal-100 min-[420px]:flex-1 sm:w-auto sm:flex-none">
+                    <Award size={16} aria-hidden="true" />
                     Certificate
                   </a>
                 )}

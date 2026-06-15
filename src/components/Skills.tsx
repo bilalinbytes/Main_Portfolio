@@ -11,12 +11,15 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="section-shell section-primary">
+    <section id="skills" aria-labelledby="skills-heading" className="section-shell section-primary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="section-heading">
-          <span className="section-kicker">Technical Stack</span>
-          <h2>Skills mapped to top-company interviews</h2>
-          <p>Core CS, backend implementation, project depth, and applied AI/ML tools in a recruiter-scannable format.</p>
+          <span className="section-kicker">Skills &amp; Technologies</span>
+          <h2 id="skills-heading">Mohammed Bilal – Skills &amp; Technologies</h2>
+          <p>
+            Mohammed Bilal's technical stack spans Core CS, backend engineering, full-stack development, applied
+            AI/ML, and cloud computing — mapped to top-company interview expectations.
+          </p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

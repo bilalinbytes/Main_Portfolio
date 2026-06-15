@@ -52,12 +52,12 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="section-shell section-primary">
+    <section id="experience" aria-labelledby="experience-heading" className="section-shell section-primary">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="section-heading">
-          <span className="section-kicker">Experience</span>
-          <h2>Leadership and engineering practice</h2>
-          <p>Real responsibilities plus focused preparation for SDE internships and AI/ML roles.</p>
+          <span className="section-kicker">Software Engineering Experience</span>
+          <h2 id="experience-heading">Mohammed Bilal – Software Engineering Experience</h2>
+          <p>Real-world engineering responsibilities and leadership practice for SDE internships and AI/ML roles.</p>
         </div>
 
         <div className="relative space-y-5 sm:pl-6">

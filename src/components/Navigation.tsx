@@ -6,11 +6,12 @@ const navItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
-  { name: "Roles", href: "#roles" },
   { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
   { name: "Education", href: "#education" },
+  { name: "Blog", href: "#blog" },
   { name: "Contact", href: "#contact" },
+  // Resume — coming soon, hidden until ready
 ];
 
 const Navigation = () => {
@@ -34,9 +35,9 @@ const Navigation = () => {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-3 min-[380px]:px-4 sm:px-6 lg:px-8">
-        <a href="#home" className="flex min-w-0 items-center gap-2 text-sm font-semibold tracking-tight text-slate-950 dark:text-white">
-          <span className="rounded-lg border border-teal-500/30 bg-teal-500/10 px-2 py-1 font-mono text-teal-700 dark:text-teal-300 min-[380px]:px-2.5">&lt;/&gt;</span>
-          <span>Bilal</span>
+        <a href="#home" aria-label="Mohammed Bilal – Home" className="flex min-w-0 items-center gap-2 text-sm font-semibold tracking-tight text-slate-950 dark:text-white">
+          <span className="rounded-lg border border-teal-500/30 bg-teal-500/10 px-2 py-1 font-mono text-teal-700 dark:text-teal-300 min-[380px]:px-2.5" aria-hidden="true">&lt;/&gt;</span>
+          <span>Mohammed Bilal</span>
         </a>
 
         <div className="hidden items-center gap-1 lg:flex">

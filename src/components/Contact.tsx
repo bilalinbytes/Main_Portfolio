@@ -38,12 +38,12 @@ const socialLinks = [
 
 const Contact = () => {
   return (
-    <section id="contact" className="section-shell section-secondary">
+    <section id="contact" aria-labelledby="contact-heading" className="section-shell section-secondary">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="section-heading">
-          <span className="section-kicker">Contact</span>
-          <h2>Let's connect</h2>
-          <p>Reach out for SDE internship opportunities, AI/ML roles, project collaboration, or placement conversations.</p>
+          <span className="section-kicker">Contact Mohammed Bilal</span>
+          <h2 id="contact-heading">Contact Mohammed Bilal</h2>
+          <p>Reach out to Mohammed Bilal for SDE internship opportunities, AI/ML roles, project collaboration, or placement conversations.</p>
         </div>
 
         <div className="grid gap-5 md:grid-cols-2">
@@ -88,9 +88,15 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="text-copy-muted mt-8 border-t border-slate-200 pt-6 text-center text-sm dark:border-white/10 sm:mt-12">
-          2026 Mohammed Bilal. Built with React and Tailwind CSS.
-        </div>
+        <footer className="text-copy-muted mt-8 border-t border-slate-200 pt-6 text-center text-sm dark:border-white/10 sm:mt-12">
+          <p>
+            &copy; 2026{" "}
+            <a href="https://www.mohammedbilal.me/" className="font-medium text-teal-700 hover:underline dark:text-teal-300">
+              Mohammed Bilal
+            </a>{" "}
+            · Software Engineer &amp; AI/ML Developer · PES University, Bengaluru · Built with React and Tailwind CSS
+          </p>
+        </footer>
       </div>
     </section>
   );

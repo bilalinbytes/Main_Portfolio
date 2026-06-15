@@ -37,12 +37,12 @@ const certifications = [
 
 const Education = () => {
   return (
-    <section id="education" className="section-shell section-secondary">
+    <section id="education" aria-labelledby="education-heading" className="section-shell section-secondary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="section-heading">
           <span className="section-kicker">Education</span>
-          <h2>Computer Science foundation</h2>
-          <p>Academic training and continuous learning aligned with SDE and AI/ML interview expectations.</p>
+          <h2 id="education-heading">Mohammed Bilal – PES University, Bengaluru</h2>
+          <p>Mohammed Bilal's academic training at PES University aligned with SDE and AI/ML interview expectations.</p>
         </div>
 
         <div className="grid gap-5 lg:grid-cols-3">
