@@ -99,7 +99,7 @@ const About = () => {
               <div className="text-soft mt-4 space-y-4 text-sm leading-6 sm:text-base sm:leading-7">
                 <p>
                   Mohammed Bilal is a Computer Science &amp; Engineering student at PES University, Bengaluru, with a
-                  7.60 CGPA, distinction awards, and hands-on work across backend systems, cloud-aware application
+                   distinction awards, and hands-on work across backend systems, cloud-aware application
                   design, applied AI/ML, and practical project execution.
                 </p>
                 <p>
