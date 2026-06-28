@@ -2,6 +2,12 @@ import { Award, ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
+    title: "Quantara — AI Financial Intelligence",
+    description: "Production-grade AI financial intelligence platform combining live market data, SEC filings, and multi-agent LLM research for conversational investment analysis and actionable insights.",
+    focus: ["Next.js", "FastAPI", "Groq", "Qdrant", "PostgreSQL", "Redis"],
+    github: "https://github.com/bilalinbytes/quantara",
+  },
+  {
     title: "ModelMatrix - CoreStack Capstone",
     description: "AI model benchmarking and recommendation platform using AWS Bedrock and Google Vertex AI, with FastAPI services for prompt analysis, governance insights, and enterprise model evaluation.",
     focus: ["FastAPI", "AWS Bedrock", "Vertex AI", "React", "Model Evaluation"],
