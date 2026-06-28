@@ -1,13 +1,23 @@
-import type { Project } from "@/data/projects";
+import type { Project, ProjectTag } from "@/data/projects";
+import { viewOptions } from "@/data/projects";
 import HighlightsLine from "./HighlightsLine";
 import ProjectLinks from "./ProjectLinks";
 import ProjectScreenshot from "./ProjectScreenshot";
 import StackLine from "./StackLine";
-import StoryGrid from "./StoryGrid";
 import StarRating from "./StarRating";
 
 type DomainCardProps = {
   project: Project;
+};
+
+const tagEmoji = (tag: ProjectTag): string =>
+  viewOptions.find((o) => o.value === tag)?.emoji ?? "";
+
+const difficultyLabel: Record<string, string> = {
+  beginner: "Beginner",
+  intermediate: "Intermediate",
+  advanced: "Advanced",
+  "production-grade": "Production Grade",
 };
 
 const DomainCard = ({ project }: DomainCardProps) => (
@@ -17,7 +27,7 @@ const DomainCard = ({ project }: DomainCardProps) => (
   >
     <ProjectScreenshot
       src={project.image}
-      alt={`${project.title} product interface`}
+      alt={project.title}
       title={project.title}
       aspect="wide"
       className="rounded-t-2xl"
@@ -43,13 +53,26 @@ const DomainCard = ({ project }: DomainCardProps) => (
         className="mt-4 text-xs font-medium"
       />
 
-      <div className="mt-3 flex flex-wrap gap-x-2.5 gap-y-1 text-xs text-slate-400 dark:text-slate-500">
-        {project.skills.map((skill) => (
-          <span key={skill}>{skill}</span>
-        ))}
+      <div className="mt-3 flex flex-wrap gap-1.5">
+        <span className="inline-flex items-center gap-1 rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600 dark:bg-white/[0.04] dark:text-slate-400">
+          <span aria-hidden="true">{tagEmoji(project.tag)}</span>
+          {viewOptions.find((o) => o.value === project.tag)?.label ?? project.tag}
+        </span>
+        <span className="inline-flex items-center gap-1 rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600 dark:bg-white/[0.04] dark:text-slate-400">
+          {difficultyLabel[project.difficulty] ?? project.difficulty}
+        </span>
+        {project.status === "live-demo" && (
+          <span className="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-400">
+            Live Demo
+          </span>
+        )}
       </div>
 
-      <footer className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200/60 pt-4 dark:border-white/[0.06]">
+      <p className="mt-3 text-xs text-slate-400 dark:text-slate-500" aria-label="Skills">
+        {project.skills.join(" · ")}
+      </p>
+
+      <footer className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate-200/60 pt-3 dark:border-white/[0.06]">
         <StackLine
           stack={project.stack}
           className="text-xs font-medium text-slate-400 dark:text-slate-500"

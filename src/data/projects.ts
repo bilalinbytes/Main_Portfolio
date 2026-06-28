@@ -13,6 +13,40 @@ export type ProjectLinks = {
 
 export type ProjectDomain = "ai-ml" | "backend-distributed" | "cloud-enterprise" | "data-science";
 
+export type ProjectTag =
+  | "featured"
+  | "production"
+  | "enterprise"
+  | "ai-llm"
+  | "cloud"
+  | "backend"
+  | "full-stack"
+  | "distributed-systems"
+  | "healthcare"
+  | "ml"
+  | "academic";
+
+export type ProjectDifficulty = "beginner" | "intermediate" | "advanced" | "production-grade";
+
+export type ProjectStatus = "completed" | "in-progress" | "live-demo" | "research" | "open-source";
+
+export type ViewOption = { value: ProjectTag | "all"; label: string; emoji: string };
+
+export const viewOptions: ViewOption[] = [
+  { value: "all", label: "All Projects", emoji: "📁" },
+  { value: "featured", label: "Featured", emoji: "⭐" },
+  { value: "production", label: "Production Ready", emoji: "🚀" },
+  { value: "enterprise", label: "Enterprise", emoji: "🏢" },
+  { value: "ai-llm", label: "AI / LLM", emoji: "🤖" },
+  { value: "cloud", label: "Cloud", emoji: "☁️" },
+  { value: "backend", label: "Backend", emoji: "⚙️" },
+  { value: "full-stack", label: "Full Stack", emoji: "🌐" },
+  { value: "distributed-systems", label: "Distributed Systems", emoji: "🏗️" },
+  { value: "healthcare", label: "Healthcare", emoji: "🩺" },
+  { value: "ml", label: "Machine Learning", emoji: "📊" },
+  { value: "academic", label: "Academic", emoji: "🎓" },
+];
+
 export type DomainConfig = {
   id: ProjectDomain;
   label: string;
@@ -57,6 +91,9 @@ export type Project = {
   impact: string;
   story: ProjectStory;
   domain: ProjectDomain;
+  tag: ProjectTag;
+  difficulty: ProjectDifficulty;
+  status: ProjectStatus;
   image: string;
   stack: string[];
   highlights: string[];
@@ -82,6 +119,9 @@ export const projects: Project[] = [
         "Single workflow from live quotes to filing-grounded AI answers — built for sustained production traffic.",
     },
     domain: "ai-ml",
+    tag: "production",
+    difficulty: "production-grade",
+    status: "completed",
     image: "/projects/quantara.webp",
     stack: ["Next.js", "FastAPI", "Qdrant", "Redis"],
     highlights: ["17 live APIs", "Multi-agent RAG", "SSE streaming", "Celery workers"],
@@ -105,6 +145,9 @@ export const projects: Project[] = [
         "Repeatable model selection and compliance checks before models reach production workloads.",
     },
     domain: "ai-ml",
+    tag: "enterprise",
+    difficulty: "advanced",
+    status: "in-progress",
     image: "/projects/modelmatrix.webp",
     stack: ["React", "FastAPI", "Bedrock", "Vertex AI"],
     highlights: ["Cross-cloud eval", "Governance rules", "Prompt analysis"],
@@ -128,6 +171,9 @@ export const projects: Project[] = [
         "Deployed collaboration with AIIMS Delhi — clinical staff monitor patients from a unified interface.",
     },
     domain: "cloud-enterprise",
+    tag: "healthcare",
+    difficulty: "production-grade",
+    status: "live-demo",
     image: "/projects/o2plus.webp",
     stack: ["React", "FastAPI", "Node.js", "RBAC"],
     highlights: ["AIIMS Delhi", "Real-time vitals", "Clinical RBAC"],
@@ -151,6 +197,9 @@ export const projects: Project[] = [
       impact: "Centralized auth and observability for downstream microservices.",
     },
     domain: "backend-distributed",
+    tag: "distributed-systems",
+    difficulty: "advanced",
+    status: "completed",
     image: "/projects/flowgate.webp",
     stack: ["FastAPI", "Redis", "Prometheus"],
     highlights: ["Rate limiting", "JWT middleware", "Metrics export"],
@@ -169,6 +218,9 @@ export const projects: Project[] = [
       impact: "Reduced spoilage risk with automated expiry workflows and traceable releases.",
     },
     domain: "cloud-enterprise",
+    tag: "full-stack",
+    difficulty: "intermediate",
+    status: "completed",
     image: "/projects/perishables.webp",
     stack: ["Python", "SQL", "REST API"],
     highlights: ["Expiry automation", "Scrum delivery", "CI/CD"],
@@ -187,6 +239,9 @@ export const projects: Project[] = [
       impact: "94% accuracy on rank prediction with interpretable style features.",
     },
     domain: "ai-ml",
+    tag: "ml",
+    difficulty: "advanced",
+    status: "completed",
     image: "/projects/coding-fingerprint.webp",
     stack: ["Python", "Scikit-Learn", "TF-IDF"],
     highlights: ["25K+ samples", "Ensemble models", "94% accuracy"],
@@ -205,6 +260,9 @@ export const projects: Project[] = [
       impact: "94.4% accuracy across 2,000 test games in a hackathon-winning pipeline.",
     },
     domain: "ai-ml",
+    tag: "ml",
+    difficulty: "advanced",
+    status: "completed",
     image: "/projects/hangman.webp",
     stack: ["PyTorch", "HMM", "DQN"],
     highlights: ["94.4% accuracy", "HMM + DQN", "2K test games"],
@@ -223,6 +281,9 @@ export const projects: Project[] = [
       impact: "Interactive real-time scoring for anomaly detection workflows.",
     },
     domain: "data-science",
+    tag: "ml",
+    difficulty: "intermediate",
+    status: "completed",
     image: "/projects/fraud-detection.webp",
     stack: ["Python", "Scikit-Learn", "Streamlit"],
     highlights: ["Imbalanced data", "Multi-algorithm", "Real-time UI"],
@@ -241,6 +302,9 @@ export const projects: Project[] = [
       impact: "Multi-language anti-pattern detection with suggested remediation in one pass.",
     },
     domain: "ai-ml",
+    tag: "ai-llm",
+    difficulty: "intermediate",
+    status: "completed",
     image: "/projects/codementor.webp",
     stack: ["React", "Node.js", "Gemini API"],
     highlights: ["Multi-language", "Anti-pattern detection", "Fix generation"],
@@ -259,6 +323,9 @@ export const projects: Project[] = [
       impact: "Role-separated placement workflows with reliable transactional state.",
     },
     domain: "backend-distributed",
+    tag: "full-stack",
+    difficulty: "intermediate",
+    status: "completed",
     image: "/projects/careersphere.webp",
     stack: ["Python", "MySQL", "Streamlit"],
     highlights: ["RBAC", "ACID transactions", "Stored procedures"],
@@ -277,6 +344,9 @@ export const projects: Project[] = [
       impact: "Production-faithful network architecture validated through simulation.",
     },
     domain: "cloud-enterprise",
+    tag: "cloud",
+    difficulty: "intermediate",
+    status: "completed",
     image: "/projects/networking.webp",
     stack: ["Cisco", "VLAN", "VPN"],
     highlights: ["VLAN segmentation", "ASA firewall", "Inter-VLAN routing"],
@@ -295,6 +365,9 @@ export const projects: Project[] = [
       impact: "End-to-end commerce with payment processing and admin visibility.",
     },
     domain: "backend-distributed",
+    tag: "full-stack",
+    difficulty: "intermediate",
+    status: "live-demo",
     image: "/projects/secureit.webp",
     stack: ["React", "Node.js", "MongoDB"],
     highlights: ["Stripe payments", "JWT auth", "Admin dashboard"],
@@ -316,6 +389,9 @@ export const projects: Project[] = [
       impact: "Actionable resume scores with improvement signals across dimensions.",
     },
     domain: "data-science",
+    tag: "ai-llm",
+    difficulty: "intermediate",
+    status: "completed",
     image: "/projects/cv-sensei.webp",
     stack: ["Python", "Transformers", "Streamlit"],
     highlights: ["PDF parsing", "NLP scoring", "Skill gap analysis"],
@@ -334,6 +410,9 @@ export const projects: Project[] = [
       impact: "Live team formation with project-aware matching.",
     },
     domain: "cloud-enterprise",
+    tag: "full-stack",
+    difficulty: "intermediate",
+    status: "live-demo",
     image: "/projects/teambanalo.webp",
     stack: ["React", "FastAPI", "Supabase"],
     highlights: ["Project matching", "Real-time sync", "Dockerized"],
@@ -355,6 +434,9 @@ export const projects: Project[] = [
       impact: "Low-level network diagnostics with statistical output.",
     },
     domain: "backend-distributed",
+    tag: "backend",
+    difficulty: "intermediate",
+    status: "completed",
     image: "/projects/ping-utility.webp",
     stack: ["Python", "Raw Sockets", "ICMP"],
     highlights: ["Raw sockets", "RTT statistics", "Packet loss"],
