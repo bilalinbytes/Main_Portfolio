@@ -51,8 +51,6 @@ export const domains: DomainConfig[] = [
   },
 ];
 
-export type CardSize = "hero" | "medium";
-
 export type Project = {
   slug: string;
   title: string;
@@ -64,8 +62,7 @@ export type Project = {
   highlights: string[];
   links: ProjectLinks;
   rating: 1 | 2 | 3 | 4 | 5;
-  /** Override default card sizing. Default: rating >= 4 → "medium", rating >= 5 in domain's first entry → "hero" */
-  cardSize?: CardSize;
+  skills: string[];
 };
 
 export const projects: Project[] = [
@@ -90,7 +87,7 @@ export const projects: Project[] = [
     highlights: ["17 live APIs", "Multi-agent RAG", "SSE streaming", "Celery workers"],
     links: { github: "https://github.com/bilalinbytes/quantara" },
     rating: 5,
-    cardSize: "hero",
+    skills: ["FastAPI", "Next.js", "Qdrant", "Redis", "Celery", "Multi-agent RAG", "Event-driven Architecture"],
   },
   {
     slug: "modelmatrix",
@@ -113,7 +110,7 @@ export const projects: Project[] = [
     highlights: ["Cross-cloud eval", "Governance rules", "Prompt analysis"],
     links: { github: "https://github.com/Capstone-82" },
     rating: 5,
-    cardSize: "medium",
+    skills: ["FastAPI", "React", "AWS Bedrock", "Vertex AI", "Prompt Engineering", "Cloud Governance"],
   },
   {
     slug: "o2plus",
@@ -141,7 +138,7 @@ export const projects: Project[] = [
         "https://drive.google.com/file/d/1V25BEDX2Wm8gsVd-Bf0WHQczfGRmH6C-/view?usp=sharing",
     },
     rating: 5,
-    cardSize: "medium",
+    skills: ["React", "Node.js", "FastAPI", "RBAC", "HIPAA", "Real-time Analytics"],
   },
   {
     slug: "distributed-api-gateway",
@@ -159,6 +156,7 @@ export const projects: Project[] = [
     highlights: ["Rate limiting", "JWT middleware", "Metrics export"],
     links: { github: "https://github.com/bilalinbytes" },
     rating: 5,
+    skills: ["FastAPI", "Redis", "Prometheus", "JWT", "Rate Limiting", "Microservices"],
   },
   {
     slug: "perishables-management",
@@ -176,6 +174,7 @@ export const projects: Project[] = [
     highlights: ["Expiry automation", "Scrum delivery", "CI/CD"],
     links: { github: "https://github.com/bilalinbytes/Perishable-Management-System" },
     rating: 4,
+    skills: ["Python", "SQL", "REST API", "CI/CD", "Agile/Scrum", "Inventory Systems"],
   },
   {
     slug: "coding-fingerprint",
@@ -193,6 +192,7 @@ export const projects: Project[] = [
     highlights: ["25K+ samples", "Ensemble models", "94% accuracy"],
     links: { github: "https://github.com/bilalinbytes/Coding-Fingerprint" },
     rating: 3,
+    skills: ["Python", "Scikit-Learn", "TF-IDF", "Ensemble Methods", "Feature Extraction"],
   },
   {
     slug: "hangman-ai-solver",
@@ -210,6 +210,7 @@ export const projects: Project[] = [
     highlights: ["94.4% accuracy", "HMM + DQN", "2K test games"],
     links: { github: "https://github.com/bilalinbytes/Machine-Learning-Hackathon-Hangman" },
     rating: 3,
+    skills: ["PyTorch", "HMM", "DQN", "Reinforcement Learning", "Probabilistic Modeling"],
   },
   {
     slug: "credit-card-fraud-detection",
@@ -227,6 +228,7 @@ export const projects: Project[] = [
     highlights: ["Imbalanced data", "Multi-algorithm", "Real-time UI"],
     links: { github: "https://github.com/Mohammedbilal12345/Credit-Card-Fraud-Detection" },
     rating: 4,
+    skills: ["Python", "Scikit-Learn", "Streamlit", "Imbalanced Learning", "Ensemble Methods"],
   },
   {
     slug: "codementor-ai",
@@ -244,6 +246,7 @@ export const projects: Project[] = [
     highlights: ["Multi-language", "Anti-pattern detection", "Fix generation"],
     links: { github: "https://github.com/Mohammedbilal12345/CodeMentorAI-" },
     rating: 4,
+    skills: ["React", "Node.js", "Gemini API", "AI Code Review", "Anti-pattern Detection"],
   },
   {
     slug: "careersphere",
@@ -261,6 +264,7 @@ export const projects: Project[] = [
     highlights: ["RBAC", "ACID transactions", "Stored procedures"],
     links: { github: "https://github.com/bilalinbytes/DBMS_MINI_PROJECT_F_344_347" },
     rating: 3,
+    skills: ["Python", "MySQL", "Streamlit", "RBAC", "Stored Procedures", "ACID Transactions"],
   },
   {
     slug: "classroom-networking",
@@ -278,6 +282,7 @@ export const projects: Project[] = [
     highlights: ["VLAN segmentation", "ASA firewall", "Inter-VLAN routing"],
     links: { github: "https://github.com/bilalinbytes/CLASSROOM_NETWORKING" },
     rating: 3,
+    skills: ["Cisco IOS", "VLAN", "VPN", "ASA Firewall", "ACL", "DHCP"],
   },
   {
     slug: "secureit",
@@ -298,6 +303,7 @@ export const projects: Project[] = [
       demo: "https://ecommerce-website-mern-five.vercel.app/",
     },
     rating: 4,
+    skills: ["React", "Node.js", "MongoDB", "Stripe", "JWT", "Express"],
   },
   {
     slug: "cv-sensei",
@@ -315,6 +321,7 @@ export const projects: Project[] = [
     highlights: ["PDF parsing", "NLP scoring", "Skill gap analysis"],
     links: { github: "https://github.com/Mohammedbilal12345/-CV-Sensei" },
     rating: 3,
+    skills: ["Python", "Hugging Face", "Transformers", "Streamlit", "NLP", "PDF Parsing"],
   },
   {
     slug: "team-banalo",
@@ -335,6 +342,7 @@ export const projects: Project[] = [
       demo: "https://teambanalo-frontend.onrender.com/",
     },
     rating: 3,
+    skills: ["React", "FastAPI", "Supabase", "PostgreSQL", "Docker"],
   },
   {
     slug: "ping-utility",
@@ -352,6 +360,7 @@ export const projects: Project[] = [
     highlights: ["Raw sockets", "RTT statistics", "Packet loss"],
     links: { github: "https://github.com/Mohammedbilal12345/CUSTOM_PING_UTILITY-ICMP-" },
     rating: 3,
+    skills: ["Python", "Raw Sockets", "ICMP", "Network Diagnostics", "Matplotlib"],
   },
 ];
 

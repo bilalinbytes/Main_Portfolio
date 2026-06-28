@@ -9,14 +9,6 @@ type DomainSectionProps = {
 const DomainSection = ({ domain, projects }: DomainSectionProps) => {
   if (projects.length === 0) return null;
 
-  const heroProject = projects.find((p) => p.cardSize === "hero");
-  const mediumProjects = projects.filter(
-    (p) => p.cardSize === "medium" && p !== heroProject,
-  );
-  const gridProjects = projects.filter(
-    (p) => p !== heroProject && !mediumProjects.includes(p),
-  );
-
   return (
     <section
       aria-labelledby={`domain-${domain.id}-heading`}
@@ -38,22 +30,10 @@ const DomainSection = ({ domain, projects }: DomainSectionProps) => {
         </p>
       </header>
 
-      <div className="space-y-10">
-        {heroProject && (
-          <DomainCard project={heroProject} size="hero" />
-        )}
-
-        {mediumProjects.map((project) => (
-          <DomainCard key={project.slug} project={project} size="medium" />
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project) => (
+          <DomainCard key={project.slug} project={project} />
         ))}
-
-        {gridProjects.length > 0 && (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {gridProjects.map((project) => (
-              <DomainCard key={project.slug} project={project} size="grid" />
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );
