@@ -9,9 +9,7 @@ const navItems = [
   { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
   { name: "Education", href: "#education" },
-  { name: "Blog", href: "#blog" },
   { name: "Contact", href: "#contact" },
-  // Resume — coming soon, hidden until ready
 ];
 
 const Navigation = () => {
