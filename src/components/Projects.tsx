@@ -1,87 +1,209 @@
 import { Award, ExternalLink, Github } from "lucide-react";
 
-const projects = [
+type TechGroups = Record<string, string[]>;
+
+type ProjectData = {
+  title: string;
+  rating: number;
+  description: string;
+  techGroups: TechGroups;
+  github: string;
+  demo?: string;
+  certificate?: string;
+};
+
+const StarBadge = ({ rating }: { rating: number }) => (
+  <span className="inline-flex items-center gap-0.5 text-[11px] tracking-tight text-amber-500/90 dark:text-amber-400/80" aria-label={`${rating} out of 5`}>
+    {Array.from({ length: 5 }, (_, i) => (
+      <span key={i}>{i < rating ? "★" : "☆"}</span>
+    ))}
+  </span>
+);
+
+const projects: ProjectData[] = [
   {
-    title: "ModelMatrix - CoreStack Capstone",
-    description: "AI model benchmarking and recommendation platform using AWS Bedrock and Google Vertex AI, with FastAPI services for prompt analysis, governance insights, and enterprise model evaluation.",
-    focus: ["FastAPI", "AWS Bedrock", "Vertex AI", "React", "Model Evaluation"],
+    title: "Quantara",
+    rating: 5,
+    description:
+      "Institutional investment intelligence platform unifying 17 live market APIs, SEC filing RAG, and multi-agent AI research into a single streaming architecture for financial analysts.",
+    techGroups: {
+      Core: ["Next.js", "React", "TypeScript", "FastAPI", "Python"],
+      AI: ["Groq", "RAG", "Prompt Engineering", "AI Agents", "Vector Search", "Semantic Search", "Qdrant"],
+      Infrastructure: ["Docker", "Redis", "PostgreSQL", "Celery", "JWT"],
+      Engineering: ["REST APIs", "SSE Streaming", "Caching", "Background Workers", "Financial APIs", "SEC EDGAR"],
+    },
+    github: "https://github.com/bilalinbytes/quantara",
+  },
+  {
+    title: "ModelMatrix — CoreStack Capstone",
+    rating: 5,
+    description:
+      "Cross-cloud AI model benchmarking platform enabling enterprises to evaluate, compare, and govern foundation models across AWS Bedrock and Google Vertex AI before production deployment.",
+    techGroups: {
+      Core: ["React", "TypeScript", "FastAPI", "Python"],
+      AI: ["Prompt Engineering", "Model Evaluation", "Benchmark Pipelines", "Governance Rules"],
+      Cloud: ["AWS Bedrock", "Google Vertex AI", "Cloud Governance", "Cross-cloud Strategy"],
+      Engineering: ["REST APIs", "Containerization", "CI/CD", "Policy Engines"],
+    },
     github: "https://github.com/Capstone-82",
   },
   {
-    title: "O2Plus - AIIMS Delhi Collaboration",
-    description: "Respiratory care platform for patient and clinician workflows, symptom tracking, medication monitoring, appointments, multilingual access, and risk signals using SpO2, AQI, and symptom trends.",
-    focus: ["React", "Node.js", "Healthcare", "Role-Based Access", "AIIMS Delhi"],
+    title: "O2Plus — AIIMS Delhi Collaboration",
+    rating: 5,
+    description:
+      "Clinical respiratory monitoring platform built with AIIMS Delhi — enabling pulmonologists to track patient vitals, symptoms, and risk signals in real time with multilingual clinical workflows.",
+    techGroups: {
+      Core: ["React", "TypeScript", "Node.js", "FastAPI", "Python"],
+      Infrastructure: ["PostgreSQL", "RBAC", "JWT Auth", "REST APIs"],
+      Healthcare: ["HIPAA Compliance", "Clinical Workflows", "Real-time Analytics", "SpO2/AQI Monitoring"],
+      Engineering: ["Multi-language Support", "Responsive Design", "Patient Management", "Appointment Systems"],
+    },
     github: "https://github.com/bilalinbytes/webversionSS",
     demo: "https://webversion10.vercel.app/login",
     certificate: "https://drive.google.com/file/d/1V25BEDX2Wm8gsVd-Bf0WHQczfGRmH6C-/view?usp=sharing",
   },
   {
+    title: "Distributed API Gateway",
+    rating: 4,
+    description:
+      "Production-grade API gateway providing rate-limited ingress with JWT authentication, Redis-backed throttling, and Prometheus observability for microservice architectures.",
+    techGroups: {
+      Core: ["FastAPI", "Python"],
+      Infrastructure: ["Redis", "Prometheus", "Docker"],
+      Engineering: ["Rate Limiting", "JWT Auth", "Middleware", "Metrics Export", "Distributed Systems"],
+    },
+    github: "https://github.com/bilalinbytes",
+  },
+  {
     title: "Perishables Management System",
-    description: "Semester 5 software engineering project for retail perishables such as fruits and vegetables, built with formal Scrum workflow, Jira tracking, Git branching, CI/CD practices, API work, reviews, merges, and full-marks evaluation.",
-    focus: ["Software Engineering", "Jira", "Git Workflow", "CI/CD", "APIs"],
+    rating: 4,
+    description:
+      "Retail inventory system automating expiry tracking and alerting across locations, delivered through formal Scrum ceremonies with CI/CD pipelines and full audit trails.",
+    techGroups: {
+      Core: ["Python", "REST API"],
+      Infrastructure: ["SQL", "CI/CD Pipeline", "Git Workflow"],
+      Engineering: ["Inventory State Machines", "Alert Thresholds", "API Design", "Scrum/Agile", "Jira"],
+    },
     github: "https://github.com/bilalinbytes/Perishable-Management-System",
   },
   {
-    title: "Hangman AI Solver",
-    description: "Machine learning hackathon project combining Hidden Markov Models, word filtering, and a PyTorch Deep Q-Network to solve Hangman with a 94.40% success rate across 2,000 test games.",
-    focus: ["Python", "PyTorch", "HMM", "Deep RL", "DQN"],
-    github: "https://github.com/bilalinbytes/Machine-Learning-Hackathon-Hangman",
+    title: "CodeMentor AI",
+    rating: 4,
+    description:
+      "AI code review assistant that parses multi-language source code, classifies anti-patterns at scale, and generates actionable remediation using the Gemini API.",
+    techGroups: {
+      Core: ["React", "TypeScript", "Node.js"],
+      AI: ["Gemini API", "Prompt Engineering", "Code Analysis"],
+      Engineering: ["Multi-language Parsing", "Anti-pattern Detection", "Fix Generation", "REST APIs"],
+    },
+    github: "https://github.com/Mohammedbilal12345/CodeMentorAI-",
   },
   {
-    title: "CareerSphere - Campus Placement Portal",
-    description: "DBMS mini project for a campus placement platform with role-based Admin, Student, and Recruiter flows, job applications, recruiter approval, analytics, MySQL/SQLite support, triggers, procedures, transactions, and constraints.",
-    focus: ["Python", "Streamlit", "MySQL", "SQLite", "DBMS"],
-    github: "https://github.com/bilalinbytes/DBMS_MINI_PROJECT_F_344_347",
+    title: "Credit Card Fraud Detection",
+    rating: 4,
+    description:
+      "Real-time fraud scoring pipeline handling extreme class imbalance through multi-algorithm ensemble learning with an interactive Streamlit interface for operator review.",
+    techGroups: {
+      Core: ["Python", "Scikit-Learn", "Streamlit"],
+      ML: ["Imbalanced Learning", "Ensemble Methods", "Anomaly Detection", "Model Evaluation"],
+      Engineering: ["Data Pipelines", "Real-time Scoring", "Feature Engineering", "Resampling Strategies"],
+    },
+    github: "https://github.com/Mohammedbilal12345/Credit-Card-Fraud-Detection",
   },
   {
     title: "Coding Fingerprint",
-    description: "Machine learning system that analyzes code style, tokens, indentation, and structural patterns to predict a programmer's competitive programming rank and country from 25,000+ Codeforces samples.",
-    focus: ["Python", "Scikit-Learn", "Flask", "Streamlit", "TF-IDF"],
+    rating: 4,
+    description:
+      "Programmer identification system analyzing code style, tokens, and structural patterns to predict competitive programming rank and country of origin across 25,000+ Codeforces submissions.",
+    techGroups: {
+      Core: ["Python", "Scikit-Learn", "TF-IDF"],
+      ML: ["Feature Extraction", "Ensemble Models", "Text Classification", "Supervised Learning"],
+      Engineering: ["Data Pipelines", "Statistical Analysis", "Model Evaluation", "25K+ Sample Pipeline"],
+    },
     github: "https://github.com/bilalinbytes/Coding-Fingerprint",
   },
   {
-    title: "Classroom Networking Simulation",
-    description: "Cisco Packet Tracer simulation of a secure classroom network with DHCP, VLAN segmentation, VPN access, ASA firewall, routing, switching, servers, printers, and smartboard connectivity.",
-    focus: ["Cisco Packet Tracer", "DHCP", "VLAN", "VPN", "Firewall"],
-    github: "https://github.com/bilalinbytes/CLASSROOM_NETWORKING",
+    title: "Hangman AI Solver",
+    rating: 3,
+    description:
+      "Reinforcement learning agent combining Hidden Markov Model letter priors with Deep Q-Network policy optimization, achieving 94.4% accuracy across 2,000 test games.",
+    techGroups: {
+      Core: ["Python", "PyTorch"],
+      ML: ["Deep Q-Networks", "Hidden Markov Models", "Reinforcement Learning", "Probabilistic Modeling"],
+      Engineering: ["Policy Optimization", "Sequential Decision Making", "Game Theory"],
+    },
+    github: "https://github.com/bilalinbytes/Machine-Learning-Hackathon-Hangman",
   },
   {
-    title: "Securite System",
-    description: "Full-stack e-commerce platform for security products with authentication, product flows, payment integration, and admin-ready architecture.",
-    focus: ["React", "Node.js", "Express", "MongoDB", "Stripe"],
+    title: "SecureIT",
+    rating: 3,
+    description:
+      "Full-stack e-commerce platform with Stripe payment integration, JWT-authenticated user sessions, and admin operations dashboard built on the MERN stack.",
+    techGroups: {
+      Core: ["React", "Node.js", "Express", "MongoDB"],
+      Infrastructure: ["JWT Auth", "Stripe API", "REST APIs"],
+      Engineering: ["Payment Webhooks", "Session Management", "Admin Dashboard", "CRUD Operations"],
+    },
     github: "https://github.com/Mohammedbilal12345/Ecommerce-Website-MERN-",
     demo: "https://ecommerce-website-mern-five.vercel.app/",
   },
   {
-    title: "Credit Card Fraud Detection",
-    description: "Machine learning app for identifying suspicious transactions with preprocessing, model evaluation, and a Streamlit interface for testing predictions.",
-    focus: ["Python", "Streamlit", "Pandas", "Scikit-Learn"],
-    github: "https://github.com/Mohammedbilal12345/Credit-Card-Fraud-Detection",
-  },
-  {
-    title: "Team Banalo",
-    description: "Hackathon team-formation platform with project matching, collaboration flows, and a modern full-stack structure for real users.",
-    focus: ["React", "TypeScript", "FastAPI", "Supabase", "Docker"],
-    github: "https://github.com/Mohammedbilal12345/TeamBanalo",
-    demo: "https://teambanalo-frontend.onrender.com/",
-  },
-  {
-    title: "CodeMentor AI",
-    description: "AI-powered code review assistant that analyzes source code, explains issues, and returns practical improvement suggestions.",
-    focus: ["React", "Express", "Gemini API", "PrismJS"],
-    github: "https://github.com/Mohammedbilal12345/CodeMentorAI-",
-  },
-  {
-    title: "Custom Ping Utility",
-    description: "Networking utility for ICMP testing, analysis, and visualization, built to show systems thinking beyond frontend work.",
-    focus: ["Python", "Raw Sockets", "Networking", "Matplotlib"],
-    github: "https://github.com/Mohammedbilal12345/CUSTOM_PING_UTILITY-ICMP-",
+    title: "CareerSphere — Campus Placement Portal",
+    rating: 3,
+    description:
+      "Multi-role campus placement portal with ACID-compliant transaction handling, stored procedures, and role-based access for Admin, Student, and Recruiter workflows.",
+    techGroups: {
+      Core: ["Python", "MySQL", "Streamlit"],
+      Engineering: ["RBAC", "ACID Transactions", "Stored Procedures", "Database Triggers", "Analytics Dashboards"],
+    },
+    github: "https://github.com/bilalinbytes/DBMS_MINI_PROJECT_F_344_347",
   },
   {
     title: "CV Sensei",
-    description: "Resume evaluator using NLP and PDF parsing to score resumes and surface role-specific improvement signals.",
-    focus: ["Streamlit", "NLP", "Transformers", "PyMuPDF"],
+    rating: 3,
+    description:
+      "NLP-powered resume evaluator using transformer models for multi-dimensional scoring, PDF extraction, and role-specific skill gap analysis.",
+    techGroups: {
+      Core: ["Python", "Transformers", "Streamlit"],
+      AI: ["Hugging Face", "NLP", "Text Classification"],
+      Engineering: ["PDF Parsing", "Document Analysis", "Scoring Algorithms"],
+    },
     github: "https://github.com/Mohammedbilal12345/-CV-Sensei",
+  },
+  {
+    title: "Classroom Networking Simulation",
+    rating: 3,
+    description:
+      "Enterprise-grade campus network simulation with VLAN segmentation, VPN remote access, ASA firewall policies, and inter-VLAN routing validated through Cisco Packet Tracer.",
+    techGroups: {
+      Core: ["Cisco IOS", "VLAN", "VPN"],
+      Infrastructure: ["ASA Firewall", "DHCP", "ACL", "Routing & Switching"],
+      Engineering: ["Network Segmentation", "Enterprise Topology Design", "Failover Planning"],
+    },
+    github: "https://github.com/bilalinbytes/CLASSROOM_NETWORKING",
+  },
+  {
+    title: "Custom Ping Utility",
+    rating: 3,
+    description:
+      "Raw-socket ICMP diagnostic tool providing RTT statistics, packet loss visualization, and traceroute functionality — built from scratch for deep network debugging.",
+    techGroups: {
+      Core: ["Python", "Raw Sockets", "ICMP Protocol"],
+      Engineering: ["Network Diagnostics", "RTT Aggregation", "Statistical Analysis", "Matplotlib Visualization"],
+    },
+    github: "https://github.com/Mohammedbilal12345/CUSTOM_PING_UTILITY-ICMP-",
+  },
+  {
+    title: "Team Banalo",
+    rating: 2,
+    description:
+      "Hackathon team formation platform with intelligent project matching, real-time collaboration, and persistent team state management for event participants.",
+    techGroups: {
+      Core: ["React", "TypeScript", "FastAPI", "Supabase", "PostgreSQL"],
+      Engineering: ["Real-time Sync", "Docker Deployment", "REST APIs", "User Matching"],
+    },
+    github: "https://github.com/Mohammedbilal12345/TeamBanalo",
+    demo: "https://teambanalo-frontend.onrender.com/",
   },
 ];
 
@@ -102,13 +224,23 @@ const Projects = () => {
           {projects.map((project) => (
             <article key={project.title} className="premium-card flex flex-col" itemScope itemType="https://schema.org/SoftwareSourceCode">
               <div className="p-4 sm:p-6">
-                <h3 className="text-main break-words text-lg font-semibold sm:text-xl" itemProp="name">{project.title}</h3>
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-main break-words text-lg font-semibold sm:text-xl" itemProp="name">{project.title}</h3>
+                  <StarBadge rating={project.rating} />
+                </div>
                 <p className="text-copy-muted mt-3 text-sm leading-6 md:min-h-28" itemProp="description">{project.description}</p>
-                <div className="mt-5 flex flex-wrap gap-2" aria-label="Technologies used">
-                  {project.focus.map((tech) => (
-                    <span key={tech} className="max-w-full break-words rounded-md border border-teal-500/20 bg-teal-500/10 px-2.5 py-1 text-xs font-medium text-teal-800 dark:text-teal-100" itemProp="programmingLanguage">
-                      {tech}
-                    </span>
+                <div className="mt-4 space-y-3" aria-label="Technologies used">
+                  {Object.entries(project.techGroups).map(([group, techs]) => (
+                    <div key={group}>
+                      <p className="mb-1 text-[11px] font-medium uppercase tracking-wider text-slate-400 dark:text-slate-500">{group}</p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {techs.map((tech) => (
+                          <span key={tech} className="max-w-full break-words rounded-md border border-teal-500/20 bg-teal-500/10 px-2 py-0.5 text-[11px] font-medium text-teal-800 dark:text-teal-100" itemProp="programmingLanguage">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
