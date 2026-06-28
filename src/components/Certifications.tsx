@@ -1,4 +1,4 @@
-import { Award, ExternalLink, Shield, Star, Brain, Cloud, Server, Code2, BookOpen } from "lucide-react";
+import { Award, ExternalLink, Shield, Star, Brain, Cloud, Server, Code2, BookOpen, BarChart3 } from "lucide-react";
 
 type Certification = {
   title: string;
@@ -64,6 +64,17 @@ const certifications: Certification[] = [
     badges: ["Python", "React", "DSA", "Algorithms"],
     icon: Shield,
     date: "2024",
+  },
+  {
+    title: "LeetCode — bilalinbytes80",
+    subtitle: "59 problems solved · 31 Easy · 27 Medium · 1 Hard",
+    description:
+      "Active problem-solving practice across data structures, algorithms, and system design fundamentals. Global rank #2,322,252 with consistent submissions.",
+    badges: ["Data Structures", "Algorithms", "Problem Solving", "DSA"],
+    icon: BarChart3,
+    link: "https://leetcode.com/bilalinbytes80/",
+    linkLabel: "View Profile",
+    date: "Active",
   },
 ];
 
