@@ -11,20 +11,61 @@ export type ProjectLinks = {
   certificate?: string;
 };
 
-export type ProjectCategory = "AI/ML" | "Full-Stack" | "Infra";
+export type ProjectDomain = "ai-ml" | "backend-distributed" | "cloud-enterprise" | "data-science";
+
+export type DomainConfig = {
+  id: ProjectDomain;
+  label: string;
+  emoji: string;
+  description: string;
+};
+
+export const domains: DomainConfig[] = [
+  {
+    id: "ai-ml",
+    label: "AI & Machine Learning",
+    emoji: "🧠",
+    description:
+      "Building intelligent systems using LLMs, machine learning, and enterprise AI workflows. From production-grade RAG pipelines to reinforcement learning agents.",
+  },
+  {
+    id: "backend-distributed",
+    label: "Backend & Distributed Systems",
+    emoji: "🌐",
+    description:
+      "High-performance APIs, distributed architectures, caching, networking, authentication, and observability.",
+  },
+  {
+    id: "cloud-enterprise",
+    label: "Cloud & Enterprise",
+    emoji: "☁️",
+    description:
+      "Real-world software engineering, healthcare platforms, cloud-native development, and enterprise systems.",
+  },
+  {
+    id: "data-science",
+    label: "Data Science & Analytics",
+    emoji: "📊",
+    description:
+      "Data-driven insights, statistical modeling, and analytical systems for decision intelligence.",
+  },
+];
+
+export type CardSize = "hero" | "medium";
 
 export type Project = {
   slug: string;
   title: string;
   impact: string;
   story: ProjectStory;
-  category: ProjectCategory;
+  domain: ProjectDomain;
   image: string;
   stack: string[];
   highlights: string[];
   links: ProjectLinks;
-  /** 1 = flagship, 2–3 = secondary featured, undefined = archive */
-  rank?: 1 | 2 | 3;
+  rating: 1 | 2 | 3 | 4 | 5;
+  /** Override default card sizing. Default: rating >= 4 → "medium", rating >= 5 in domain's first entry → "hero" */
+  cardSize?: CardSize;
 };
 
 export const projects: Project[] = [
@@ -43,12 +84,13 @@ export const projects: Project[] = [
       impact:
         "Single workflow from live quotes to filing-grounded AI answers — built for sustained production traffic.",
     },
-    category: "AI/ML",
+    domain: "ai-ml",
     image: "/projects/quantara.webp",
     stack: ["Next.js", "FastAPI", "Qdrant", "Redis"],
     highlights: ["17 live APIs", "Multi-agent RAG", "SSE streaming", "Celery workers"],
     links: { github: "https://github.com/bilalinbytes/quantara" },
-    rank: 1,
+    rating: 5,
+    cardSize: "hero",
   },
   {
     slug: "modelmatrix",
@@ -65,16 +107,17 @@ export const projects: Project[] = [
       impact:
         "Repeatable model selection and compliance checks before models reach production workloads.",
     },
-    category: "AI/ML",
+    domain: "ai-ml",
     image: "/projects/modelmatrix.webp",
     stack: ["React", "FastAPI", "Bedrock", "Vertex AI"],
     highlights: ["Cross-cloud eval", "Governance rules", "Prompt analysis"],
     links: { github: "https://github.com/Capstone-82" },
-    rank: 2,
+    rating: 5,
+    cardSize: "medium",
   },
   {
-    slug: "saanssync",
-    title: "SaansSync",
+    slug: "o2plus",
+    title: "O2Plus",
     impact:
       "Clinical respiratory monitoring platform built with AIIMS Delhi for real-time patient workflows.",
     story: {
@@ -87,8 +130,8 @@ export const projects: Project[] = [
       impact:
         "Deployed collaboration with AIIMS Delhi — clinical staff monitor patients from a unified interface.",
     },
-    category: "Full-Stack",
-    image: "/projects/saanssync.webp",
+    domain: "cloud-enterprise",
+    image: "/projects/o2plus.webp",
     stack: ["React", "FastAPI", "Node.js", "RBAC"],
     highlights: ["AIIMS Delhi", "Real-time vitals", "Clinical RBAC"],
     links: {
@@ -97,7 +140,8 @@ export const projects: Project[] = [
       certificate:
         "https://drive.google.com/file/d/1V25BEDX2Wm8gsVd-Bf0WHQczfGRmH6C-/view?usp=sharing",
     },
-    rank: 3,
+    rating: 5,
+    cardSize: "medium",
   },
   {
     slug: "distributed-api-gateway",
@@ -109,11 +153,12 @@ export const projects: Project[] = [
       solution: "FastAPI gateway with Redis-backed limiters, JWT middleware, and Prometheus exporters.",
       impact: "Centralized auth and observability for downstream microservices.",
     },
-    category: "Infra",
+    domain: "backend-distributed",
     image: "/projects/flowgate.webp",
     stack: ["FastAPI", "Redis", "Prometheus"],
     highlights: ["Rate limiting", "JWT middleware", "Metrics export"],
     links: { github: "https://github.com/bilalinbytes" },
+    rating: 5,
   },
   {
     slug: "perishables-management",
@@ -125,11 +170,12 @@ export const projects: Project[] = [
       solution: "Python backend with SQL persistence, automated alerts, and CI/CD through Jira-tracked sprints.",
       impact: "Reduced spoilage risk with automated expiry workflows and traceable releases.",
     },
-    category: "Full-Stack",
+    domain: "cloud-enterprise",
     image: "/projects/perishables.webp",
     stack: ["Python", "SQL", "REST API"],
     highlights: ["Expiry automation", "Scrum delivery", "CI/CD"],
     links: { github: "https://github.com/bilalinbytes/Perishable-Management-System" },
+    rating: 4,
   },
   {
     slug: "coding-fingerprint",
@@ -141,11 +187,12 @@ export const projects: Project[] = [
       solution: "TF-IDF feature pipeline with ensemble classifiers and rigorous holdout evaluation.",
       impact: "94% accuracy on rank prediction with interpretable style features.",
     },
-    category: "AI/ML",
+    domain: "ai-ml",
     image: "/projects/coding-fingerprint.webp",
     stack: ["Python", "Scikit-Learn", "TF-IDF"],
     highlights: ["25K+ samples", "Ensemble models", "94% accuracy"],
     links: { github: "https://github.com/bilalinbytes/Coding-Fingerprint" },
+    rating: 3,
   },
   {
     slug: "hangman-ai-solver",
@@ -157,11 +204,12 @@ export const projects: Project[] = [
       solution: "HMM letter priors fused with DQN action selection in PyTorch, evaluated on held-out corpora.",
       impact: "94.4% accuracy across 2,000 test games in a hackathon-winning pipeline.",
     },
-    category: "AI/ML",
+    domain: "ai-ml",
     image: "/projects/hangman.webp",
     stack: ["PyTorch", "HMM", "DQN"],
     highlights: ["94.4% accuracy", "HMM + DQN", "2K test games"],
     links: { github: "https://github.com/bilalinbytes/Machine-Learning-Hackathon-Hangman" },
+    rating: 3,
   },
   {
     slug: "credit-card-fraud-detection",
@@ -173,11 +221,12 @@ export const projects: Project[] = [
       solution: "Multi-algorithm ensemble with resampling strategies and a Streamlit prediction surface.",
       impact: "Interactive real-time scoring for anomaly detection workflows.",
     },
-    category: "AI/ML",
+    domain: "data-science",
     image: "/projects/fraud-detection.webp",
     stack: ["Python", "Scikit-Learn", "Streamlit"],
     highlights: ["Imbalanced data", "Multi-algorithm", "Real-time UI"],
     links: { github: "https://github.com/Mohammedbilal12345/Credit-Card-Fraud-Detection" },
+    rating: 4,
   },
   {
     slug: "codementor-ai",
@@ -189,11 +238,12 @@ export const projects: Project[] = [
       solution: "React client with Node.js API orchestrating Gemini prompts and syntax-aware analysis.",
       impact: "Multi-language anti-pattern detection with suggested remediation in one pass.",
     },
-    category: "AI/ML",
+    domain: "ai-ml",
     image: "/projects/codementor.webp",
     stack: ["React", "Node.js", "Gemini API"],
     highlights: ["Multi-language", "Anti-pattern detection", "Fix generation"],
     links: { github: "https://github.com/Mohammedbilal12345/CodeMentorAI-" },
+    rating: 4,
   },
   {
     slug: "careersphere",
@@ -205,11 +255,12 @@ export const projects: Project[] = [
       solution: "Streamlit frontend over MySQL with RBAC, stored procedures, and analytics dashboards.",
       impact: "Role-separated placement workflows with reliable transactional state.",
     },
-    category: "Full-Stack",
+    domain: "backend-distributed",
     image: "/projects/careersphere.webp",
     stack: ["Python", "MySQL", "Streamlit"],
     highlights: ["RBAC", "ACID transactions", "Stored procedures"],
     links: { github: "https://github.com/bilalinbytes/DBMS_MINI_PROJECT_F_344_347" },
+    rating: 3,
   },
   {
     slug: "classroom-networking",
@@ -221,11 +272,12 @@ export const projects: Project[] = [
       solution: "Cisco Packet Tracer design with VLANs, VPN tunnels, ASA policies, and routed subnets.",
       impact: "Production-faithful network architecture validated through simulation.",
     },
-    category: "Infra",
+    domain: "cloud-enterprise",
     image: "/projects/networking.webp",
     stack: ["Cisco", "VLAN", "VPN"],
     highlights: ["VLAN segmentation", "ASA firewall", "Inter-VLAN routing"],
     links: { github: "https://github.com/bilalinbytes/CLASSROOM_NETWORKING" },
+    rating: 3,
   },
   {
     slug: "secureit",
@@ -237,7 +289,7 @@ export const projects: Project[] = [
       solution: "React storefront with Express API, MongoDB persistence, Stripe checkout, and JWT sessions.",
       impact: "End-to-end commerce with payment processing and admin visibility.",
     },
-    category: "Full-Stack",
+    domain: "backend-distributed",
     image: "/projects/secureit.webp",
     stack: ["React", "Node.js", "MongoDB"],
     highlights: ["Stripe payments", "JWT auth", "Admin dashboard"],
@@ -245,6 +297,7 @@ export const projects: Project[] = [
       github: "https://github.com/Mohammedbilal12345/Ecommerce-Website-MERN-",
       demo: "https://ecommerce-website-mern-five.vercel.app/",
     },
+    rating: 4,
   },
   {
     slug: "cv-sensei",
@@ -256,11 +309,12 @@ export const projects: Project[] = [
       solution: "Streamlit app with Hugging Face models, PDF extraction, and skill-gap analysis.",
       impact: "Actionable resume scores with improvement signals across dimensions.",
     },
-    category: "AI/ML",
+    domain: "data-science",
     image: "/projects/cv-sensei.webp",
     stack: ["Python", "Transformers", "Streamlit"],
     highlights: ["PDF parsing", "NLP scoring", "Skill gap analysis"],
     links: { github: "https://github.com/Mohammedbilal12345/-CV-Sensei" },
+    rating: 3,
   },
   {
     slug: "team-banalo",
@@ -272,7 +326,7 @@ export const projects: Project[] = [
       solution: "React and FastAPI stack on Supabase with PostgreSQL and Dockerized deployment.",
       impact: "Live team formation with project-aware matching.",
     },
-    category: "Full-Stack",
+    domain: "cloud-enterprise",
     image: "/projects/teambanalo.webp",
     stack: ["React", "FastAPI", "Supabase"],
     highlights: ["Project matching", "Real-time sync", "Dockerized"],
@@ -280,6 +334,7 @@ export const projects: Project[] = [
       github: "https://github.com/Mohammedbilal12345/TeamBanalo",
       demo: "https://teambanalo-frontend.onrender.com/",
     },
+    rating: 3,
   },
   {
     slug: "ping-utility",
@@ -291,14 +346,13 @@ export const projects: Project[] = [
       solution: "Python raw-socket ICMP client with RTT aggregation and matplotlib visualization.",
       impact: "Low-level network diagnostics with statistical output.",
     },
-    category: "Infra",
+    domain: "backend-distributed",
     image: "/projects/ping-utility.webp",
     stack: ["Python", "Raw Sockets", "ICMP"],
     highlights: ["Raw sockets", "RTT statistics", "Packet loss"],
     links: { github: "https://github.com/Mohammedbilal12345/CUSTOM_PING_UTILITY-ICMP-" },
+    rating: 3,
   },
 ];
 
-export const flagship = projects.find((p) => p.rank === 1)!;
-export const featuredSecondary = projects.filter((p) => p.rank === 2 || p.rank === 3);
-export const archive = projects.filter((p) => !p.rank);
+

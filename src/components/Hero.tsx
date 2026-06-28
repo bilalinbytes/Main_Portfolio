@@ -8,7 +8,7 @@ const terminalLines = [
   ["$ target_roles", "SDE Internship  |  AI/ML Engineer"],
   ["$ tech_stack", "Python  C++  TypeScript  React  FastAPI  Node.js  AWS"],
   ["$ focus", "DSA  Backend APIs  Applied ML  Cloud AI  Healthcare software"],
-  ["$ current_work", "CoreStack ModelMatrix capstone + SaansSync AIIMS Delhi collaboration"],
+  ["$ current_work", "CoreStack ModelMatrix capstone + O2Plus AIIMS Delhi collaboration"],
 ];
 
 const socials = [

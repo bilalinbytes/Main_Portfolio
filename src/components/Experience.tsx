@@ -5,7 +5,7 @@ const experiences = [
     role: "Freelance Software Developer",
     organization: "Self-employed",
     period: "Jan 2025 - Present",
-    project: "SaansSync - AIIMS Delhi Collaboration",
+    project: "O2Plus - AIIMS Delhi Collaboration",
     links: [
       { label: "Code", href: "https://github.com/bilalinbytes/webversionSS", icon: Github },
       { label: "Live Demo", href: "https://webversion10.vercel.app/login", icon: ExternalLink },

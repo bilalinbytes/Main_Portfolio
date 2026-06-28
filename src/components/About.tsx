@@ -73,7 +73,7 @@ const About = () => {
                 FastAPI services.
               </p>
               <p>
-                Also developed SaansSync through an AIIMS Delhi collaboration, building patient and
+                Also developed O2Plus through an AIIMS Delhi collaboration, building patient and
                 clinician flows for respiratory care with role-based access, symptom tracking, medication monitoring,
                 and risk signals.
               </p>
